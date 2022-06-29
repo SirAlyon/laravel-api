@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
+
+
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -42,7 +46,9 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view ('admin.posts.create', compact('categories'));
+        $tags = Tag::all();
+        //dd($tags);
+        return view ('admin.posts.create', compact('categories', 'tags'));
         
     }
 
@@ -70,7 +76,7 @@ class PostController extends Controller
 
             //Valido il file
             $request->validate([
-                'cover_imgae' => 'nullable|image|max:250'
+                'cover_image' => 'nullable|image|max:250'
             ]);
             //Salvo il file nel filesystem
             //ddd($request->all());
@@ -86,7 +92,7 @@ class PostController extends Controller
         
         //redirect to a get route
         $new_post = Post::create($val_data);
-
+        $new_post->tags()->attach($request->tags);
         //return (new NewPostCreated($new_post))->render();
 
         //Invia la mail usando l'istanza dellutente nella request

@@ -15,7 +15,7 @@
         <div class="form-group my-3">
             <label for="cover_image">Cover Image</label>
             <input type="file" class="form-control @error('cover_image') is-invalid @enderror" id="cover_image" name="cover_image" aria-describedby="cover_imageHelp">
-            <small id="cover_imageHelp" class="form-text text-muted">Type the cover image link</small>
+            <small id="cover_imageHelp" class="form-text text-muted">Upload you cover image</small>
         </div>
 
         <label for="category">Category</label>
@@ -27,6 +27,15 @@
         </select>
         <small id="categoryHelp" class="form-text text-muted my-3">Select post's category</small>
 
+        <label for="tags">Tags</label>
+        <select class="form-select @error('tags') is-invalid @enderror" multiple aria-label="tags" name="tags[]" id="tags">
+            <option selected>Choose tags</option>
+            @foreach ($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+            @endforeach
+            <small id="tagsHelp" class="form-text text-muted my-3">Select post's tags</small>
+
+        </select>
 
         <div class="form-group my-3">
             <label for="content">Content</label>

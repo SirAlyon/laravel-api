@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Category;
+use App\Models\Tag;
+
 
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'content', 'slug', 'cover_image', 'category_id'];
+    protected $fillable = ['title', 'content', 'slug', 'cover_image', 'category_id', 'tags'];
 
     public function category()
     {
