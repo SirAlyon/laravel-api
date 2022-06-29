@@ -18,11 +18,11 @@
             <small id="cover_imageHelp" class="form-text text-muted">Upload you cover image</small>
         </div>
 
-        <label for="category">Category</label>
-        <select class="form-select @error('category') is-invalid @enderror" aria-label="Default select example" name="category" id="category">
+        <label for="category_id">Category</label>
+        <select class="form-select @error('category_id') is-invalid @enderror" aria-label="Default select example" name="category_id" id="category_id">
             <option selected>Choose Category...</option>
             @foreach ($categories as $category)
-              <option value="{{$category->id}}" @if (old('category') == $category->id) selected="selected" @endif>{{$category->name}}</option>  
+              <option value="{{$category->id}}" @if (old('category_id') == $category->id) selected="selected" @endif>{{$category->name}}</option>  
             @endforeach
         </select>
         <small id="categoryHelp" class="form-text text-muted my-3">Select post's category</small>

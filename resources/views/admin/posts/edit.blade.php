@@ -34,6 +34,15 @@
         </select>
         <small id="category_idHelp" class="form-text text-muted my-3">Select post's category</small>
 
+        <label for="tags">Tags</label>
+        <select class="form-select @error('tags') is-invalid @enderror" multiple aria-label="tags" name="tags[]" id="tags">
+            <option>Choose tags</option>
+            @foreach ($tags as $tag)
+            <option value="{{$tag->id}}" {{$post->tags->contains($tag->id) ? 'selected' : ''}}>{{$tag->name}}</option>
+            @endforeach
+            <small id="tagsHelp" class="form-text text-muted my-3">Select post's tags</small>
+
+        </select>
 
         <div class="form-group mb-4">
             <label for="content">Content</label>

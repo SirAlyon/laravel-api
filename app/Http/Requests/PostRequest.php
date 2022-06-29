@@ -29,7 +29,7 @@ class PostRequest extends FormRequest
             'cover_image' => ['nullable'],
             'content' => ['nullable'],
             'category_id' => ['nullable', 'exists:categories,id'],
-            'tags' => ['exists:tags,id']
+            'tags' => ['nullable', 'exists:tags,id']
 
         
         ];
